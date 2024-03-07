@@ -13,11 +13,7 @@ todos = functions.loadList(file_name)
 
 def add_todo():
     todo_local = st.session_state["new_todo"]
-    # print("-----add todo-----")
-    # print(todos)
     todos.append(todo_local)
-    # print(todos)
-    st.session_state["new_todo"] = ""
     functions.updateFileList(file_name, todos)
 
 
@@ -30,13 +26,10 @@ for index, todo in enumerate(todos):
     checkbox_key = f"{index}-{todo}"
     checkbox = st.checkbox(todo, key=checkbox_key)
     if checkbox:
-        # print("-----deleting todo-----")
-        # print(todos)
         todos.pop(index)
-        # print(todos)
         functions.updateFileList(file_name, todos)
         del st.session_state[checkbox_key]
-        st.rerun()
+        st.experimental_rerun()
 
 st.text_input(label="Add a new todo", key='new_todo', on_change=add_todo)
 

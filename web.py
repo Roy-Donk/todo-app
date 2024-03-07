@@ -14,6 +14,7 @@ todos = functions.loadList(file_name)
 def add_todo():
     todo_local = st.session_state["new_todo"]
     todos.append(todo_local)
+    st.session_state["new_todo"] = ""
     functions.updateFileList(file_name, todos)
 
 

@@ -1,2 +1,3 @@
-/files/todo.txt
+files/todo.txt
 /.gitignore
+venv
